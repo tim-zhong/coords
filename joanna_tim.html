@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Title</title>
+</head>
+<body>
+
+<div id="debug">
+</div>
+
+<script src="js/nano.js"></script>
+<script>
+var sender = "Joanna";
+var receiver = "Tim";
+var receiverEmail = "timzhong2374@gmail.com";
+
+if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position){
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
+
+    sendLocation(latitude, longitude);
+
+    },function error(msg){alert('Please enable your GPS position future.');  
+
+  }, {maximumAge:600000, timeout:5000, enableHighAccuracy: true});
+
+}else {
+    alert("Geolocation API is not supported in your browser.");
+}
+
+
+function sendLocation(latitude, longitude){
+	if(confirm("Send?")){
+        var email = encodeHTML(receiverEmail);
+        var lat = encodeHTML(latitude);
+        var lng = encodeHTML(longitude);
+
+        ajxpgn('debug','notify.php?email='+email+'&lat='+lat+'&lng='+lng);
+	}
+}
+</script>
+</body>
+</html>
+
