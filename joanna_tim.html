@@ -36,7 +36,7 @@ function sendLocation(latitude, longitude){
         var lat = encodeHTML(latitude);
         var lng = encodeHTML(longitude);
 
-        ajxpgn('debug','notify.php?email='+email+'&lat='+lat+'&lng='+lng);
+        ajxpgn('debug','http://timzhong.com/temp/notify/notify.php?email='+email+'&lat='+lat+'&lng='+lng);
 	}
 }
 </script>
